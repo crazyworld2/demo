@@ -1,31 +1,9 @@
-#VERSION: 1.0.1
+
 FROM ubuntu
-MAINTAINER xushuibo "1378183751@qq.com"
-#设置root用户为后续命令的执行者
-USER root
-#执行操作
-RUN apt-get update
-RUN apt-get install -y nginx
-#使用&&拼接命令
-RUN touch test.txt && echo "abc" >> abc.txt
-#对外暴露端口
-EXPOSE 80 8080 1038
-#添加文件
-ADD mdir/abc.txt mdir/opt/
-#添加文件夹
-ADD mdir/webapp mdir/opt/webapp
-#添加网络文件
-ADD https://www.baidu.com/img/bd_logo1.png opt/
-#设置环境变量
-ENV WEBAPP_PORT=9090
-#设置工作目录
-WORKDIR mdir/
-#设置启动命令
-ENTRYPOINT ["ls"]
-#设置启动参数
-CMD ["-a","-l"]
-#设置卷
-VOLUME ["/data"]
-#设置子镜像的出发操作
-ONBUILD ADD ./app/src 
-ONBUILD RUN echo "on build excuted">>onbuild.txt
+MAINTAINER hello
+ADD test1.txt test1.txt
+ADD test1.txt test1.txt.bak
+ADD test1.txt /mydir/
+ADD data1  data1
+ADD data2  data2
+
